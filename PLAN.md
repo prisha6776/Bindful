@@ -1,4 +1,4 @@
-# EcoLens — Development Plan
+# Bindful — Development Plan
 **Author:** Dhavalkumar Patel
 **Date:** March 2026
 **Status:** Phase 1 (UI) complete → Planning Phase 2–4
@@ -25,7 +25,7 @@ Replace `CameraView` placeholder with a real, live camera feed.
 
 #### 2.1 — Request Camera Permission
 - Add `NSCameraUsageDescription` key to `Info.plist`
-  - Message: `"EcoLens needs your camera to identify and sort waste items."`
+  - Message: `"Bindful needs your camera to identify and sort waste items."`
 - Use `AVCaptureDevice.requestAccess(for: .video)` to trigger the system permission dialog
 - Handle three states:
   - **Granted** → start the camera session
@@ -50,7 +50,7 @@ Replace `CameraView` placeholder with a real, live camera feed.
 - Overlay on top of camera feed:
   - A center targeting reticle (rounded square outline) to guide framing
   - A bottom bar with the capture button
-  - A top bar with a back button and a small EcoLens logo
+  - A top bar with a back button and a small Bindful logo
   - Subtle label: "Point at an item to scan"
 
 ---
