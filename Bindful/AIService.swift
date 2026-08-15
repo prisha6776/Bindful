@@ -56,7 +56,7 @@ final class AIService {
     private init() {}
 
     // My backend server holds the real API key, so the app itself never has it
-    private let endpoint = URL(string: "https://ecolens-proxy.vercel.app/api/classify")!
+    private let endpoint = URL(string: "https://bindful-api.vercel.app/api/classify")!
 
     // A random ID for this install so the backend can count scans anonymously
     private func getDeviceId() -> String {
