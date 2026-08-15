@@ -21,7 +21,7 @@ Most people want to sort their waste correctly but don't actually know the rules
 - Scan history is saved locally on your device only.
 - Basic anonymous usage stats (like total scans) are tracked with a random device ID, never tied to your identity.
 
-Full privacy policy: https://ecolens-proxy.vercel.app/privacy.html
+Full privacy policy: https://bindful-api.vercel.app/privacy.html
 
 ## Built with
 
