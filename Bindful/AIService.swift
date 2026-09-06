@@ -60,7 +60,7 @@ final class AIService {
 
     // A random ID for this install so the backend can count scans anonymously
     private func getDeviceId() -> String {
-        let key = "ecolens.anonymousDeviceId"
+        let key = "bindful.anonymousDeviceId"
         if let existing = UserDefaults.standard.string(forKey: key) {
             return existing
         }

@@ -82,7 +82,7 @@ struct SecondaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(.system(size: 17, weight: .semibold))
-                .foregroundStyle(Color(hex: "#4A6741"))
+                .foregroundStyle(Color.brandGreen)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 18)
                 .background(Color(hex: "#E8E49A"))
@@ -92,9 +92,12 @@ struct SecondaryButton: View {
     }
 }
 
-// MARK: Color Hex Extension
+// MARK: Shared Colors
 
 extension Color {
+    static let brandGreen = Color(hex: "#4A6741")
+    static let appBackground = Color(hex: "#FFF8E7")
+
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0

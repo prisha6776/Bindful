@@ -57,7 +57,7 @@ final class ScanStore: ObservableObject {
 
     // MARK: Persistence
 
-    private let storageKey = "ecolens_scan_records"
+    private let storageKey = "bindful_scan_records"
 
     private func save() {
         if let data = try? JSONEncoder().encode(records) {

@@ -6,7 +6,7 @@ struct ImpactView: View {
 
     var body: some View {
         ZStack {
-            Color(hex: "#FFF8E7").ignoresSafeArea()
+            Color.appBackground.ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 16) {
@@ -31,7 +31,7 @@ struct ImpactView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 32)
-                    .background(Color(hex: "#4A6741"))
+                    .background(Color.brandGreen)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .padding(.horizontal)
 
@@ -61,11 +61,11 @@ struct ImpactView: View {
                         StatBox(icon: "arrow.3.trianglepath",
                                 count: store.recycleCount,
                                 label: "Recycled",
-                                color: Color(hex: "#2196F3"))
+                                color: Color(hex: WasteCategory.recycle.hexColor))
                         StatBox(icon: "leaf",
                                 count: store.compostCount,
                                 label: "Composted",
-                                color: Color(hex: "#4CAF50"))
+                                color: Color(hex: WasteCategory.compost.hexColor))
                         StatBox(icon: "trash",
                                 count: store.trashCount,
                                 label: "Trashed",

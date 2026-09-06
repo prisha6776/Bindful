@@ -186,12 +186,24 @@ extension CameraModel: AVCapturePhotoCaptureDelegate {
     nonisolated func photoOutput(_ output: AVCapturePhotoOutput,
                                   didFinishProcessingPhoto photo: AVCapturePhoto,
                                   error: Error?) {
-        let image = photo.fileDataRepresentation().flatMap { UIImage(data: $0) }
+        // full camera resolution (can be 20-50+ MP) was way more than the AI needs
+        // and was eating a ton of memory once resized/base64'd/displayed all at once
+        let raw = photo.fileDataRepresentation().flatMap { UIImage(data: $0) }
+        let image = raw.map { Self.downscaled($0, maxDimension: 1200) }
         Task { @MainActor [weak self] in
             self?.lastCapturedImage = image
             self?.completionHandler?(image)
             self?.completionHandler = nil
         }
+    }
+
+    private nonisolated static func downscaled(_ image: UIImage, maxDimension: CGFloat) -> UIImage {
+        let longestSide = max(image.size.width, image.size.height)
+        guard longestSide > maxDimension else { return image }
+        let scale = maxDimension / longestSide
+        let newSize = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+        return renderer.image { _ in image.draw(in: CGRect(origin: .zero, size: newSize)) }
     }
 }
 

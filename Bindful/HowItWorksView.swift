@@ -3,7 +3,7 @@ import SwiftUI
 struct HowItWorksView: View {
     var body: some View {
         ZStack {
-            Color(hex: "#FFF8E7").ignoresSafeArea()
+            Color.appBackground.ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 20) {
@@ -19,7 +19,7 @@ struct HowItWorksView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(20)
-                    .background(Color(hex: "#4A6741"))
+                    .background(Color.brandGreen)
                     .clipShape(RoundedRectangle(cornerRadius: 18))
                     .padding(.horizontal)
 
@@ -45,7 +45,7 @@ struct HowItWorksView: View {
                     StepCard(icon: "leaf.fill",
                              title: "Step 🌿: My Impact",
                              description: "Every scan saves to your history. See your daily streak and how many items you've kept out of landfill.",
-                             iconCircleColor: Color(hex: "#4A6741"),
+                             iconCircleColor: Color.brandGreen,
                              iconColor: .white)
                     .padding(.horizontal)
 
@@ -70,7 +70,7 @@ struct HowItWorksView: View {
 
                     HStack(alignment: .top, spacing: 8) {
                         Image(systemName: "info.circle.fill")
-                            .foregroundStyle(Color(hex: "#4A6741"))
+                            .foregroundStyle(Color.brandGreen)
                         Text("These guidelines follow California state disposal rules (SB 1383). Local city and county rules can vary, so check with your local waste hauler if you're not sure.")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -93,7 +93,7 @@ struct HowItWorksView: View {
 
                         Text("Think before you throw; help the planet grow! 🌱")
                             .font(.subheadline.italic())
-                            .foregroundStyle(Color(hex: "#4A6741"))
+                            .foregroundStyle(Color.brandGreen)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .padding(16)
@@ -169,7 +169,7 @@ struct StatFact: View {
         VStack(spacing: 4) {
             Text(value)
                 .font(.system(size: 24, weight: .bold, design: .rounded))
-                .foregroundStyle(Color(hex: "#4A6741"))
+                .foregroundStyle(Color.brandGreen)
             Text(label)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
@@ -185,11 +185,8 @@ struct CategoryRow: View {
     let items: String
 
     private var nameColor: Color {
-        switch category {
-        case .recycle: return Color(hex: "#2196F3")
-        case .compost: return Color(hex: "#4CAF50")
-        case .trash:   return Color(hex: "#424242")
-        }
+        // trash gets its own darker gray here since the category's icon-bg gray is too light for text on this card
+        category == .trash ? Color(hex: "#424242") : Color(hex: category.hexColor)
     }
 
     private var cardBackground: Color {

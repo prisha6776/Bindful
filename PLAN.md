@@ -1,5 +1,5 @@
 # Bindful — Development Plan
-**Author:** Dhavalkumar Patel
+**Author:** Prisha Patel
 **Date:** March 2026
 **Status:** Phase 1 (UI) complete → Planning Phase 2–4
 

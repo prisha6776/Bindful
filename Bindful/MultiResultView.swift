@@ -36,17 +36,17 @@ struct MultiResultView: View {
                                     if recycleCount > 0 {
                                         CategoryBadge(icon: "arrow.3.trianglepath",
                                                       count: recycleCount,
-                                                      color: Color(hex: "#2196F3"))
+                                                      color: Color(hex: WasteCategory.recycle.hexColor))
                                     }
                                     if compostCount > 0 {
                                         CategoryBadge(icon: "leaf.fill",
                                                       count: compostCount,
-                                                      color: Color(hex: "#4CAF50"))
+                                                      color: Color(hex: WasteCategory.compost.hexColor))
                                     }
                                     if trashCount > 0 {
                                         CategoryBadge(icon: "trash.fill",
                                                       count: trashCount,
-                                                      color: Color(hex: "#9E9E9E"))
+                                                      color: Color(hex: WasteCategory.trash.hexColor))
                                     }
                                 }
                             }
@@ -55,7 +55,7 @@ struct MultiResultView: View {
 
                 ScrollView {
                     VStack(spacing: 12) {
-                        ForEach(results, id: \.item) { result in
+                        ForEach(Array(results.enumerated()), id: \.offset) { _, result in
                             ResultItemCard(result: result)
                         }
 
@@ -72,7 +72,7 @@ struct MultiResultView: View {
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 18)
-                            .background(Color(hex: "#4A6741"))
+                            .background(Color.brandGreen)
                             .clipShape(Capsule())
                         }
                         .padding(.top, 4)
